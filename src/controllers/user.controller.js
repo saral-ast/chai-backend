@@ -1,3 +1,4 @@
+
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.model.js";
@@ -64,7 +65,6 @@ const registerUser = asyncHandler(async (req, res) => {
   ) {
     coverImageLocalPath = req.files.coverImage[0].path;
   }
-
   if (!avatarLocalPath) {
     throw new ApiError(400, "Avatar file is required");
   }
@@ -72,6 +72,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const avatar = await uploadOnCloudinary(avatarLocalPath);
   const coverImage = await uploadOnCloudinary(coverImageLocalPath);
 
+  
   if (!avatar) {
     throw new ApiError(400, "Avatar file is required");
   }
@@ -98,7 +99,7 @@ const registerUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, createdUser, "User registered Successfully"));
 });
 
-const loginUser = asyncHandler(async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {w
   // req body -> data
   // username or email
   //find the user
@@ -107,7 +108,6 @@ const loginUser = asyncHandler(async (req, res) => {
   //send cookie
 
   const { email, username, password } = req.body;
-  console.log(req.body);
 
   if (!username && !email) {
     throw new ApiError(400, "username or email is required");
