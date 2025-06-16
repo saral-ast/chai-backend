@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-
+import { errorHandler } from "./utils/errorHandler.js";
 const app = express()
 
 app.use(cors({
@@ -36,6 +36,9 @@ app.use("/api/v1/comments", commentRouter)
 app.use("/api/v1/likes", likeRouter)
 app.use("/api/v1/playlist", playlistRouter)
 app.use("/api/v1/dashboard", dashboardRouter)
+
+
+app.use(errorHandler);
 
 // http://localhost:8000/api/v1/users/register
 
