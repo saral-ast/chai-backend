@@ -99,7 +99,7 @@ const registerUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, createdUser, "User registered Successfully"));
 });
 
-const loginUser = asyncHandler(async (req, res) => {w
+const loginUser = asyncHandler(async (req, res) => {
   // req body -> data
   // username or email
   //find the user
